@@ -21,9 +21,14 @@ public class OrderApp {
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
 
-        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Order order = orderService.createOrder(memberId, "itemA", 20000);
         System.out.println("order = " + order);
-        // order = Order{memberId=1, itemName='itemA', itemPrice=10000, discountPrice=1000}
+//        order = Order{memberId=1, itemName='itemA', itemPrice=20000, discountPrice=2000}
+//        order.calculatePrice() = 18000
+
+//        Order order = orderService.createOrder(memberId, "itemA", 10000);
+//        order = Order{memberId=1, itemName='itemA', itemPrice=10000, discountPrice=1000}
+//        order.calculatePrice() = 9000
 
         System.out.println("order.calculatePrice() = " + order.calculatePrice());
         // order.calculatePrice() = 9000
