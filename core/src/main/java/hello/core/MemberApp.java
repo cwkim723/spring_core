@@ -24,7 +24,6 @@ public class MemberApp {
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
         //                                     이름               타입
 
-
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
