@@ -30,12 +30,17 @@ public class AppConfig {
     // MemoryMemberRepository가 두 번 호출되니까 싱글톤이 깨지는 것이 아닐까??
 
 
-
+    // 예상 출력 결과
     // call AppConfig.memberService
     // call AppConfig.memberRepository
     // call AppConfig.memberRepository
     // call AppConfig.orderService
     // call AppConfig.memberRepository
+
+    // 실제 실행 결과
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
 
     @Bean
     public MemberService memberService(){
