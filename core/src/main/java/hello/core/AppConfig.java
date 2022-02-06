@@ -25,18 +25,33 @@ public class AppConfig {
 //        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
 //    }
 
+    // @Bean memberService -> new MemoryMemberRepository() (memberService -> MemberServiceImpl -> memberRepository -> MemoryMemberRepository)
+    // @Bean orderService -> new MemoryMemberRepository() (orderService -> OrderServiceImpl -> memberRepository -> MemoryMemberRepository)
+    // MemoryMemberRepository가 두 번 호출되니까 싱글톤이 깨지는 것이 아닐까??
+
+
+
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+    // call AppConfig.memberRepository
+
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository()); // refactor: ctrl alt m
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
