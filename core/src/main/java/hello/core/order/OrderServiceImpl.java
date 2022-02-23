@@ -13,11 +13,15 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); // 객체를 직접 생성하고 구체적인 것까지 Impl이 다 정하게 됨
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy; // 인터페이스에 의존하게 됨
+//    private MemberRepository memberRepository;
+//    private DiscountPolicy discountPolicy;
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy; // 인터페이스에 의존하게 됨
     // 철저하게 DI를 지키고 있음
     // final -> 생성자로 할당을 받아야 함
 
+    // 수정자 (setter) 주입
 //    @Autowired
 //    public void setMemberRepository(MemberRepository memberRepository) {
 //        System.out.println("memberRepository = " + memberRepository);
@@ -30,6 +34,7 @@ public class OrderServiceImpl implements OrderService{
 //        this.discountPolicy = discountPolicy;
 //    }
 
+    // 생성자 주입
     @Autowired // 생략가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("OrderServiceImpl.OrderServiceImpl");
@@ -37,11 +42,11 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }
 
-    @Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
