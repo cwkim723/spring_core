@@ -26,6 +26,8 @@ public class ApplicationContextExtendsFindTest {
         /*
          org.springframework.beans.factory.NoUniqueBeanDefinitionException:
          No qualifying bean of type 'hello.core.discount.DiscountPolicy' available: expected single matching bean but found 2: rateDiscountPolicy,fixDiscountPolicy
+
+         이 에러메시지는 하나의  DiscountPolicy 타입의 bean을 기대했으나, fixDiscountPolicy,rateDiscountPolicy 두 개 다 빈으로 등록되어 있어 유니크하지 않아 발생하는 에러메시지
         */
 
         assertThrows(NoUniqueBeanDefinitionException.class, () -> ac.getBean(DiscountPolicy.class));
