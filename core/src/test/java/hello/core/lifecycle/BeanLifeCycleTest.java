@@ -21,6 +21,16 @@ public class BeanLifeCycleTest {
             connect : null
             call : null message = 초기화 연결 메시지
         */
+
+        /*
+            생성자 호출, url = null
+            NetworkClient.afterPropertiesSet
+            connect : http://hello-spring.dev
+            call : http://hello-spring.dev message = 초기화 연결 메시지
+            00:42:04.191 [main] DEBUG org.springframework.context.annotation.AnnotationConfigApplicationContext - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6253c26, started on Thu Mar 03 00:42:03 KST 2022
+            NetworkClient.destroy
+            close : http://hello-spring.dev
+        */
     }
 
     @Configuration
